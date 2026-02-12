@@ -11,6 +11,8 @@ async function runSearch(query) {
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
   await page.goto(`https://duckduckgo.com/?q=${encodeURIComponent(query)}`);
+  await page.waitForLoadState('domcontentloaded', { timeout: 20000 });
+  await page.screenshot({ path: 'debug.png', fullPage: true })
   await page.waitForSelector('a.result__a', { timeout: 10000 });
   const results = await page.$$eval('article[data-nir="result"]', nodes =>
     nodes.slice(0, 8).map(node => {
