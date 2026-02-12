@@ -1,5 +1,8 @@
 import Fastify from 'fastify';
 import { chromium } from 'playwright';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const fastify = Fastify();
 const API_KEY = process.env.SEARCH_PROXY_KEY;

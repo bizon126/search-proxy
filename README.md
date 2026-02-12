@@ -32,4 +32,4 @@ pm2 start "node server.js" --name search-proxy
 pm2 save
 ```
 
-Expose via nginx/https if needed.
+Expose via nginx/https if needed. Use HTTP endpoint `http://<server>:8787/search` and send header `X-API-Key: <secret>`.
